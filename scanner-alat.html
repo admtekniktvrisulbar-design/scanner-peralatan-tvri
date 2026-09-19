@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Scanner Peralatan TVRI Sulawesi Barat</title>
+
+  <!-- ============================================================
+       LIBRARY PEMBACA QR
+       ============================================================ -->
+  <script src="https://unpkg.com/html5-qrcode"></script>
+
+
+  <style>
+
+    /* ============================================================
+       TAMPILAN DASAR
+       ============================================================ */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #222;
+    }
+
+
+    /* ============================================================
+       CONTAINER
+       ============================================================ */
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+
+
+    /* ============================================================
+       CARD
+       ============================================================ */
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 16px;
+
+      box-shadow:
+        0 3px 12px rgba(0,0,0,0.08);
+    }
+
+
+    /* ============================================================
+       JUDUL
+       ============================================================ */
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 5px;
+
+      font-size: 24px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+
+    /* ============================================================
+       AREA KAMERA
+       ============================================================ */
+
+    #reader {
+      width: 100%;
+      overflow: hidden;
+
+      border-radius: 10px;
+      background: #000;
+    }
+
+
+    /* ============================================================
+       STATUS SCANNER
+       ============================================================ */
+
+    .status {
+      margin-top: 16px;
+
+      padding: 12px;
+
+      background: #f5f5f5;
+      border-radius: 8px;
+
+      font-size: 13px;
+      line-height: 1.5;
+
+      text-align: center;
+    }
+
+
+    /* ============================================================
+       HASIL SCAN
+       ============================================================ */
+
+    .hasil {
+      display: none;
+
+      margin-top: 15px;
+      padding: 14px;
+
+      background: #e8f5e9;
+      border-radius: 8px;
+    }
+
+    .hasil-label {
+      font-size: 11px;
+      color: #666;
+
+      margin-bottom: 5px;
+    }
+
+    .hasil-id {
+      font-size: 18px;
+      font-weight: bold;
+
+      color: #137333;
+
+      word-break: break-word;
+    }
+
+
+    /* ============================================================
+       TOMBOL
+       ============================================================ */
+
+    .button {
+      width: 100%;
+
+      margin-top: 15px;
+      padding: 14px;
+
+      border: none;
+      border-radius: 8px;
+
+      background: #1976d2;
+      color: white;
+
+      font-size: 14px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+
+    /* ============================================================
+       RESPONSIVE HP
+       ============================================================ */
+
+    @media (max-width: 500px) {
+
+      .container {
+        padding: 12px;
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+  <div class="card">
+
+    <h1>Scan QR Peralatan</h1>
+
+    <div class="subtitle">
+      Sistem Peralatan Teknik TVRI Sulawesi Barat
+    </div>
+
+
+    <!-- ==========================================================
+         AREA KAMERA
+         ========================================================== -->
+
+    <div id="reader"></div>
+
+
+    <!-- ==========================================================
+         STATUS
+         ========================================================== -->
+
+    <div
+      id="statusScanner"
+      class="status"
+    >
+      Menyiapkan kamera...
+    </div>
+
+
+    <!-- ==========================================================
+         HASIL PEMBACAAN
+         ========================================================== -->
+
+    <div
+      id="hasilScan"
+      class="hasil"
+    >
+
+      <div class="hasil-label">
+        ID PERALATAN TERBACA
+      </div>
+
+      <div
+        id="hasilId"
+        class="hasil-id"
+      ></div>
+
+    </div>
+
+
+    <!-- ==========================================================
+         TOMBOL SCAN ULANG
+         ========================================================== -->
+
+    <button
+      id="btnScanLagi"
+      class="button"
+      style="display:none;"
+      onclick="mulaiScanner()"
+    >
+      SCAN ALAT LAIN
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+
+// =================================================================
+// VARIABEL SCANNER
+// =================================================================
+
+let scanner = null;
+
+let sedangMemproses = false;
+
+
+// =================================================================
+// MULAI SCANNER
+// =================================================================
+
+async function mulaiScanner() {
+
+  sedangMemproses = false;
+
+  document.getElementById('hasilScan').style.display =
+    'none';
+
+  document.getElementById('btnScanLagi').style.display =
+    'none';
+
+  document.getElementById('statusScanner').innerText =
+    'Menyiapkan kamera...';
+
+
+  // ---------------------------------------------------------------
+  // Jika scanner sebelumnya masih ada, hentikan terlebih dahulu.
+  // ---------------------------------------------------------------
+
+  if (scanner) {
+
+    try {
+
+      await scanner.stop();
+
+    } catch (error) {
+
+      // Tidak perlu melakukan apa-apa jika scanner
+      // memang sudah berhenti.
+
+    }
+
+  }
+
+
+  // ---------------------------------------------------------------
+  // Buat scanner baru
+  // ---------------------------------------------------------------
+
+  scanner =
+    new Html5Qrcode(
+      'reader'
+    );
+
+
+  try {
+
+    // -------------------------------------------------------------
+    // Gunakan kamera belakang HP
+    // -------------------------------------------------------------
+
+    await scanner.start(
+
+      {
+        facingMode: 'environment'
+      },
+
+      {
+        fps: 10,
+
+        qrbox: {
+          width: 250,
+          height: 250
+        }
+      },
+
+      prosesQRCode
+
+    );
+
+
+    document.getElementById('statusScanner').innerText =
+      'Arahkan kamera ke QR Code peralatan.';
+
+
+  } catch (error) {
+
+    document.getElementById('statusScanner').innerText =
+      'Kamera tidak dapat dibuka. Pastikan izin kamera sudah diberikan.';
+
+    console.error(
+      error
+    );
+
+  }
+
+}
+
+
+// =================================================================
+// PROSES QR YANG BERHASIL DIBACA
+// =================================================================
+
+async function prosesQRCode(decodedText) {
+
+  // Hindari QR diproses berkali-kali
+  if (sedangMemproses) {
+    return;
+  }
+
+  sedangMemproses = true;
+
+
+  // ---------------------------------------------------------------
+  // Hentikan kamera setelah QR terbaca
+  // ---------------------------------------------------------------
+
+  try {
+
+    await scanner.stop();
+
+  } catch (error) {
+
+    console.log(
+      'Scanner sudah berhenti.'
+    );
+
+  }
+
+
+  // ---------------------------------------------------------------
+  // Ambil ID alat dari QR
+  //
+  // QR kita berbentuk:
+  //
+  // https://script.google.com/.../exec?id=CAM_JVCENG_001
+  //
+  // Jadi kita mengambil nilai parameter "id".
+  // ---------------------------------------------------------------
+
+  let idAlat = '';
+
+  try {
+
+    const url =
+      new URL(
+        decodedText
+      );
+
+    idAlat =
+      url.searchParams.get(
+        'id'
+      ) || '';
+
+  } catch (error) {
+
+    // -------------------------------------------------------------
+    // Cadangan:
+    // apabila suatu saat QR hanya berisi ID alat langsung.
+    // -------------------------------------------------------------
+
+    idAlat =
+      decodedText.trim();
+
+  }
+
+
+  // ---------------------------------------------------------------
+  // Jika ID tidak ditemukan
+  // ---------------------------------------------------------------
+
+  if (!idAlat) {
+
+    document.getElementById('statusScanner').innerText =
+      'QR Code tidak dikenali sebagai QR peralatan.';
+
+    document.getElementById('btnScanLagi').style.display =
+      'block';
+
+    return;
+
+  }
+
+
+  // ---------------------------------------------------------------
+  // Tampilkan ID yang berhasil dibaca
+  // ---------------------------------------------------------------
+
+  document.getElementById('hasilId').innerText =
+    idAlat;
+
+  document.getElementById('hasilScan').style.display =
+    'block';
+
+  document.getElementById('statusScanner').innerText =
+    'QR Code berhasil dibaca.';
+
+  document.getElementById('btnScanLagi').style.display =
+    'block';
+
+
+  // ---------------------------------------------------------------
+  // Untuk sementara kita hanya menampilkan hasil.
+  //
+  // BELUM dikirim ke halaman keranjang.
+  //
+  // Kita sengaja menguji scanner terlebih dahulu agar mudah
+  // mengetahui apakah masalah berasal dari kamera/QR atau dari
+  // komunikasi dengan halaman peminjaman.
+  // ---------------------------------------------------------------
+
+  console.log(
+    'ID ALAT:',
+    idAlat
+  );
+
+}
+
+
+// =================================================================
+// JALANKAN SCANNER SAAT HALAMAN DIBUKA
+// =================================================================
+
+window.addEventListener(
+  'load',
+  function() {
+
+    mulaiScanner();
+
+  }
+);
+
+
+</script>
+
+</body>
+
+</html>
