@@ -12,26 +12,32 @@
 
   <title>Scanner Peralatan TVRI Sulawesi Barat</title>
 
+
   <!-- ============================================================
-       LIBRARY PEMBACA QR
+       LIBRARY QR SCANNER
        ============================================================ -->
+
   <script src="https://unpkg.com/html5-qrcode"></script>
 
 
   <style>
 
     /* ============================================================
-       TAMPILAN DASAR
+       DASAR
        ============================================================ */
 
     * {
       box-sizing: border-box;
     }
 
+
     body {
       margin: 0;
+
       font-family: Arial, sans-serif;
+
       background: #f4f6f8;
+
       color: #222;
     }
 
@@ -41,9 +47,13 @@
        ============================================================ */
 
     .container {
+      width: 100%;
+
       max-width: 600px;
+
       margin: auto;
-      padding: 20px;
+
+      padding: 16px;
     }
 
 
@@ -53,12 +63,13 @@
 
     .card {
       background: #ffffff;
+
       border-radius: 14px;
-      padding: 22px;
-      margin-bottom: 16px;
+
+      padding: 20px;
 
       box-shadow:
-        0 3px 12px rgba(0,0,0,0.08);
+        0 3px 12px rgba(0, 0, 0, 0.08);
     }
 
 
@@ -67,16 +78,20 @@
        ============================================================ */
 
     h1 {
-      margin-top: 0;
-      margin-bottom: 5px;
+      margin: 0 0 6px;
 
-      font-size: 24px;
+      font-size: 23px;
+
+      color: #222;
     }
 
+
     .subtitle {
-      font-size: 13px;
-      color: #666;
       margin-bottom: 20px;
+
+      font-size: 13px;
+
+      color: #666;
     }
 
 
@@ -86,9 +101,11 @@
 
     #reader {
       width: 100%;
+
       overflow: hidden;
 
       border-radius: 10px;
+
       background: #000;
     }
 
@@ -98,14 +115,16 @@
        ============================================================ */
 
     .status {
-      margin-top: 16px;
+      margin-top: 14px;
 
       padding: 12px;
 
-      background: #f5f5f5;
       border-radius: 8px;
 
+      background: #f5f5f5;
+
       font-size: 13px;
+
       line-height: 1.5;
 
       text-align: center;
@@ -113,33 +132,160 @@
 
 
     /* ============================================================
-       HASIL SCAN
+       HASIL / DETAIL
        ============================================================ */
 
     .hasil {
       display: none;
 
-      margin-top: 15px;
-      padding: 14px;
+      margin-top: 16px;
 
-      background: #e8f5e9;
-      border-radius: 8px;
+      padding: 15px;
+
+      border-radius: 10px;
+
+      background: #f8f9fa;
+
+      border: 1px solid #e0e0e0;
     }
+
 
     .hasil-label {
+      margin-bottom: 5px;
+
       font-size: 11px;
+
+      font-weight: 700;
+
       color: #666;
 
-      margin-bottom: 5px;
+      letter-spacing: 0.3px;
     }
 
-    .hasil-id {
-      font-size: 18px;
-      font-weight: bold;
 
-      color: #137333;
+    .hasil-id {
+      margin-bottom: 14px;
+
+      font-size: 18px;
+
+      font-weight: 700;
+
+      color: #1976d2;
 
       word-break: break-word;
+    }
+
+
+    /* ============================================================
+       DETAIL ALAT
+       ============================================================ */
+
+    .detail-alat {
+      overflow: hidden;
+
+      border: 1px solid #e0e0e0;
+
+      border-radius: 10px;
+
+      background: #ffffff;
+    }
+
+
+    .detail-row {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: flex-start;
+
+      gap: 15px;
+
+      padding: 11px 12px;
+
+      border-bottom: 1px solid #eeeeee;
+
+      font-size: 13px;
+    }
+
+
+    .detail-row:last-child {
+      border-bottom: none;
+    }
+
+
+    .detail-row span {
+      flex: 0 0 42%;
+
+      color: #666;
+    }
+
+
+    .detail-row strong {
+      flex: 1;
+
+      text-align: right;
+
+      color: #222;
+
+      word-break: break-word;
+    }
+
+
+    /* ============================================================
+       STATUS ALAT
+       ============================================================ */
+
+    .status-alat {
+      margin-top: 15px;
+
+      padding: 14px;
+
+      border-radius: 10px;
+
+      text-align: center;
+
+      background: #f5f5f5;
+    }
+
+
+    .status-alat-label {
+      margin-bottom: 5px;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      color: #666;
+
+      letter-spacing: 0.3px;
+    }
+
+
+    .status-alat-value {
+      font-size: 18px;
+
+      font-weight: 700;
+    }
+
+
+    .status-tersedia {
+      background: #e8f5e9;
+
+      color: #137333;
+    }
+
+
+    .status-digunakan {
+      background: #ffebee;
+
+      color: #c62828;
+    }
+
+
+    .status-lain {
+      background: #fff8e1;
+
+      color: #e65100;
     }
 
 
@@ -150,24 +296,106 @@
     .button {
       width: 100%;
 
-      margin-top: 15px;
-      padding: 14px;
+      margin-top: 12px;
+
+      padding: 14px 16px;
 
       border: none;
-      border-radius: 8px;
+
+      border-radius: 9px;
 
       background: #1976d2;
-      color: white;
+
+      color: #ffffff;
 
       font-size: 14px;
-      font-weight: bold;
+
+      font-weight: 700;
+
+      cursor: pointer;
+
+      transition:
+        background 0.2s ease,
+        transform 0.1s ease;
+    }
+
+
+    .button:hover {
+      background: #1565c0;
+    }
+
+
+    .button:active {
+      transform: scale(0.99);
+    }
+
+
+    .button:disabled {
+      background: #bdbdbd;
+
+      cursor: not-allowed;
+
+      opacity: 0.7;
+    }
+
+
+    /* ============================================================
+       TOMBOL MANUAL
+       ============================================================ */
+
+    .button-secondary {
+      width: 100%;
+
+      margin-top: 10px;
+
+      padding: 13px 16px;
+
+      border: 1px solid #1976d2;
+
+      border-radius: 9px;
+
+      background: #ffffff;
+
+      color: #1976d2;
+
+      font-size: 14px;
+
+      font-weight: 700;
 
       cursor: pointer;
     }
 
 
+    .button-secondary:hover {
+      background: #f0f7ff;
+    }
+
+
     /* ============================================================
-       RESPONSIVE HP
+       PESAN ERROR
+       ============================================================ */
+
+    .error-box {
+      display: none;
+
+      margin-top: 15px;
+
+      padding: 13px;
+
+      border-radius: 9px;
+
+      background: #ffebee;
+
+      color: #c62828;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+    }
+
+
+    /* ============================================================
+       MOBILE
        ============================================================ */
 
     @media (max-width: 500px) {
@@ -176,8 +404,19 @@
         padding: 12px;
       }
 
+
       .card {
-        padding: 18px;
+        padding: 16px;
+      }
+
+
+      h1 {
+        font-size: 21px;
+      }
+
+
+      .detail-row {
+        gap: 10px;
       }
 
     }
@@ -189,11 +428,20 @@
 
 <body>
 
+
 <div class="container">
 
   <div class="card">
 
-    <h1>Scan QR Peralatan</h1>
+
+    <!-- ==========================================================
+         JUDUL
+         ========================================================== -->
+
+    <h1>
+      Scan QR Peralatan
+    </h1>
+
 
     <div class="subtitle">
       Sistem Peralatan Teknik TVRI Sulawesi Barat
@@ -201,14 +449,14 @@
 
 
     <!-- ==========================================================
-         AREA KAMERA
+         KAMERA
          ========================================================== -->
 
     <div id="reader"></div>
 
 
     <!-- ==========================================================
-         STATUS
+         STATUS SCANNER
          ========================================================== -->
 
     <div
@@ -220,7 +468,7 @@
 
 
     <!-- ==========================================================
-         HASIL PEMBACAAN
+         DETAIL PERALATAN
          ========================================================== -->
 
     <div
@@ -229,29 +477,192 @@
     >
 
       <div class="hasil-label">
-        ID PERALATAN TERBACA
+        DETAIL PERALATAN
       </div>
+
 
       <div
         id="hasilId"
         class="hasil-id"
-      ></div>
+      >
+        -
+      </div>
+
+
+      <div class="detail-alat">
+
+
+        <div class="detail-row">
+          <span>
+            Kode Barang
+          </span>
+
+          <strong id="detailKodeBarang">
+            -
+          </strong>
+        </div>
+
+
+        <div class="detail-row">
+          <span>
+            Nama Peralatan
+          </span>
+
+          <strong id="detailNamaBarang">
+            -
+          </strong>
+        </div>
+
+
+        <div class="detail-row">
+          <span>
+            Merk
+          </span>
+
+          <strong id="detailMerk">
+            -
+          </strong>
+        </div>
+
+
+        <div class="detail-row">
+          <span>
+            Model / Type
+          </span>
+
+          <strong id="detailModel">
+            -
+          </strong>
+        </div>
+
+
+        <div class="detail-row">
+          <span>
+            Serial Number
+          </span>
+
+          <strong id="detailSerialNumber">
+            -
+          </strong>
+        </div>
+
+
+        <div class="detail-row">
+          <span>
+            Lokasi
+          </span>
+
+          <strong id="detailLokasi">
+            -
+          </strong>
+        </div>
+
+
+        <div class="detail-row">
+          <span>
+            Kondisi
+          </span>
+
+          <strong id="detailKondisi">
+            -
+          </strong>
+        </div>
+
+
+        <div class="detail-row">
+          <span>
+            Keterangan
+          </span>
+
+          <strong id="detailKeterangan">
+            -
+          </strong>
+        </div>
+
+
+      </div>
+
+
+      <!-- ========================================================
+           STATUS ALAT
+           ======================================================== -->
+
+      <div
+        id="statusAlatBox"
+        class="status-alat"
+      >
+
+        <div class="status-alat-label">
+          STATUS
+        </div>
+
+
+        <div
+          id="detailStatus"
+          class="status-alat-value"
+        >
+          -
+        </div>
+
+      </div>
+
+
+      <!-- ========================================================
+           TAMBAHKAN KE PEMINJAMAN
+           ======================================================== -->
+
+      <button
+        id="btnTambahPeminjaman"
+        class="button"
+        type="button"
+        onclick="tambahKePeminjaman()"
+      >
+        TAMBAHKAN KE PEMINJAMAN
+      </button>
+
 
     </div>
 
 
     <!-- ==========================================================
-         TOMBOL SCAN ULANG
+         ERROR
+         ========================================================== -->
+
+    <div
+      id="errorBox"
+      class="error-box"
+    ></div>
+
+
+    <!-- ==========================================================
+         SCAN ALAT LAIN
          ========================================================== -->
 
     <button
       id="btnScanLagi"
       class="button"
+      type="button"
       style="display:none;"
       onclick="mulaiScanner()"
     >
       SCAN ALAT LAIN
     </button>
+
+
+    <!-- ==========================================================
+         CARI MANUAL
+         ========================================================== -->
+
+    <button
+      id="btnCariManual"
+      class="button-secondary"
+      type="button"
+      style="display:none;"
+      onclick="kembaliKePeminjaman()"
+    >
+      CARI ALAT MANUAL
+    </button>
+
 
   </div>
 
@@ -262,12 +673,39 @@
 
 
 // =================================================================
-// VARIABEL SCANNER
+// KONFIGURASI
+// =================================================================
+
+// URL WEB APP GOOGLE APPS SCRIPT
+//
+// Gunakan URL deployment Web App yang sama dengan CONFIG.WEB_APP_URL
+// pada Apps Script kamu.
+//
+// CONTOH:
+// https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+//
+
+const APPS_SCRIPT_URL =
+  'GANTI_DENGAN_URL_WEB_APP_APPS_SCRIPT';
+
+
+/*
+ * URL halaman peminjaman akan kita isi pada tahap berikutnya.
+ *
+ * Untuk sekarang tombol CARI ALAT MANUAL akan mencoba kembali
+ * ke tab yang membuka scanner.
+ */
+
+
+// =================================================================
+// VARIABEL
 // =================================================================
 
 let scanner = null;
 
 let sedangMemproses = false;
+
+let alatHasilScan = null;
 
 
 // =================================================================
@@ -278,18 +716,45 @@ async function mulaiScanner() {
 
   sedangMemproses = false;
 
-  document.getElementById('hasilScan').style.display =
+  alatHasilScan = null;
+
+
+  // ---------------------------------------------------------------
+  // Sembunyikan hasil sebelumnya
+  // ---------------------------------------------------------------
+
+  document.getElementById(
+    'hasilScan'
+  ).style.display =
     'none';
 
-  document.getElementById('btnScanLagi').style.display =
+
+  document.getElementById(
+    'errorBox'
+  ).style.display =
     'none';
 
-  document.getElementById('statusScanner').innerText =
+
+  document.getElementById(
+    'btnScanLagi'
+  ).style.display =
+    'none';
+
+
+  document.getElementById(
+    'btnCariManual'
+  ).style.display =
+    'none';
+
+
+  document.getElementById(
+    'statusScanner'
+  ).innerText =
     'Menyiapkan kamera...';
 
 
   // ---------------------------------------------------------------
-  // Jika scanner sebelumnya masih ada, hentikan terlebih dahulu.
+  // Hentikan scanner sebelumnya
   // ---------------------------------------------------------------
 
   if (scanner) {
@@ -300,8 +765,9 @@ async function mulaiScanner() {
 
     } catch (error) {
 
-      // Tidak perlu melakukan apa-apa jika scanner
-      // memang sudah berhenti.
+      console.log(
+        'Scanner sebelumnya sudah berhenti.'
+      );
 
     }
 
@@ -319,10 +785,6 @@ async function mulaiScanner() {
 
 
   try {
-
-    // -------------------------------------------------------------
-    // Gunakan kamera belakang HP
-    // -------------------------------------------------------------
 
     await scanner.start(
 
@@ -344,18 +806,29 @@ async function mulaiScanner() {
     );
 
 
-    document.getElementById('statusScanner').innerText =
+    document.getElementById(
+      'statusScanner'
+    ).innerText =
       'Arahkan kamera ke QR Code peralatan.';
 
 
   } catch (error) {
 
-    document.getElementById('statusScanner').innerText =
-      'Kamera tidak dapat dibuka. Pastikan izin kamera sudah diberikan.';
-
     console.error(
       error
     );
+
+
+    document.getElementById(
+      'statusScanner'
+    ).innerText =
+      'Kamera tidak dapat dibuka. Pastikan izin kamera sudah diberikan.';
+
+
+    document.getElementById(
+      'btnCariManual'
+    ).style.display =
+      'block';
 
   }
 
@@ -363,21 +836,23 @@ async function mulaiScanner() {
 
 
 // =================================================================
-// PROSES QR YANG BERHASIL DIBACA
+// PROSES QR
 // =================================================================
 
-async function prosesQRCode(decodedText) {
+async function prosesQRCode(
+  decodedText
+) {
 
-  // Hindari QR diproses berkali-kali
   if (sedangMemproses) {
     return;
   }
+
 
   sedangMemproses = true;
 
 
   // ---------------------------------------------------------------
-  // Hentikan kamera setelah QR terbaca
+  // Hentikan kamera
   // ---------------------------------------------------------------
 
   try {
@@ -394,16 +869,11 @@ async function prosesQRCode(decodedText) {
 
 
   // ---------------------------------------------------------------
-  // Ambil ID alat dari QR
-  //
-  // QR kita berbentuk:
-  //
-  // https://script.google.com/.../exec?id=CAM_JVCENG_001
-  //
-  // Jadi kita mengambil nilai parameter "id".
+  // Ambil ID alat
   // ---------------------------------------------------------------
 
   let idAlat = '';
+
 
   try {
 
@@ -412,17 +882,16 @@ async function prosesQRCode(decodedText) {
         decodedText
       );
 
+
     idAlat =
       url.searchParams.get(
         'id'
       ) || '';
 
+
   } catch (error) {
 
-    // -------------------------------------------------------------
-    // Cadangan:
-    // apabila suatu saat QR hanya berisi ID alat langsung.
-    // -------------------------------------------------------------
+    // Jika QR berisi ID langsung
 
     idAlat =
       decodedText.trim();
@@ -431,16 +900,14 @@ async function prosesQRCode(decodedText) {
 
 
   // ---------------------------------------------------------------
-  // Jika ID tidak ditemukan
+  // QR tidak valid
   // ---------------------------------------------------------------
 
   if (!idAlat) {
 
-    document.getElementById('statusScanner').innerText =
-      'QR Code tidak dikenali sebagai QR peralatan.';
-
-    document.getElementById('btnScanLagi').style.display =
-      'block';
+    tampilkanError(
+      'QR Code tidak dikenali sebagai QR peralatan.'
+    );
 
     return;
 
@@ -448,34 +915,26 @@ async function prosesQRCode(decodedText) {
 
 
   // ---------------------------------------------------------------
-  // Tampilkan ID yang berhasil dibaca
+  // Tampilkan status proses
   // ---------------------------------------------------------------
 
-  document.getElementById('hasilId').innerText =
+  document.getElementById(
+    'statusScanner'
+  ).innerText =
+    'Mengambil data peralatan...';
+
+
+  document.getElementById(
+    'hasilId'
+  ).innerText =
     idAlat;
 
-  document.getElementById('hasilScan').style.display =
-    'block';
-
-  document.getElementById('statusScanner').innerText =
-    'QR Code berhasil dibaca.';
-
-  document.getElementById('btnScanLagi').style.display =
-    'block';
-
 
   // ---------------------------------------------------------------
-  // Untuk sementara kita hanya menampilkan hasil.
-  //
-  // BELUM dikirim ke halaman keranjang.
-  //
-  // Kita sengaja menguji scanner terlebih dahulu agar mudah
-  // mengetahui apakah masalah berasal dari kamera/QR atau dari
-  // komunikasi dengan halaman peminjaman.
+  // Ambil detail alat
   // ---------------------------------------------------------------
 
-  console.log(
-    'ID ALAT:',
+  mintaDetailAlat(
     idAlat
   );
 
@@ -483,7 +942,411 @@ async function prosesQRCode(decodedText) {
 
 
 // =================================================================
-// JALANKAN SCANNER SAAT HALAMAN DIBUKA
+// MEMINTA DETAIL ALAT DARI APPS SCRIPT
+// =================================================================
+
+function mintaDetailAlat(
+  idAlat
+) {
+
+
+  if (
+    !APPS_SCRIPT_URL ||
+    APPS_SCRIPT_URL.indexOf(
+      'GANTI_DENGAN'
+    ) === 0
+  ) {
+
+    tampilkanError(
+      'URL Apps Script belum diatur pada scanner.'
+    );
+
+    return;
+
+  }
+
+
+  // ---------------------------------------------------------------
+  // Buat URL API
+  // ---------------------------------------------------------------
+
+  const apiUrl =
+    APPS_SCRIPT_URL +
+    '?api=alat' +
+    '&id=' +
+    encodeURIComponent(
+      idAlat
+    ) +
+    '&callback=terimaDetailAlat';
+
+
+  // ---------------------------------------------------------------
+  // JSONP
+  // ---------------------------------------------------------------
+
+  const script =
+    document.createElement(
+      'script'
+    );
+
+
+  script.src =
+    apiUrl;
+
+
+  script.onload =
+    function() {
+
+      setTimeout(
+        function() {
+
+          script.remove();
+
+        },
+        100
+      );
+
+    };
+
+
+  script.onerror =
+    function() {
+
+      script.remove();
+
+      tampilkanError(
+        'Data peralatan tidak dapat diambil dari server.'
+      );
+
+    };
+
+
+  document.body.appendChild(
+    script
+  );
+
+}
+
+
+// =================================================================
+// MENERIMA DATA DARI APPS SCRIPT
+// =================================================================
+
+function terimaDetailAlat(
+  response
+) {
+
+  sedangMemproses = false;
+
+
+  // ---------------------------------------------------------------
+  // Validasi response
+  // ---------------------------------------------------------------
+
+  if (
+    !response ||
+    response.success !== true ||
+    !response.data
+  ) {
+
+    tampilkanError(
+      response &&
+      response.message
+        ? response.message
+        : 'Data peralatan tidak ditemukan.'
+    );
+
+    return;
+
+  }
+
+
+  const alat =
+    response.data;
+
+
+  alatHasilScan =
+    alat;
+
+
+  // ---------------------------------------------------------------
+  // Isi detail
+  // ---------------------------------------------------------------
+
+  document.getElementById(
+    'hasilId'
+  ).innerText =
+    alat.id || '-';
+
+
+  document.getElementById(
+    'detailKodeBarang'
+  ).innerText =
+    alat.kodeBarang || '-';
+
+
+  document.getElementById(
+    'detailNamaBarang'
+  ).innerText =
+    alat.namaBarang || '-';
+
+
+  document.getElementById(
+    'detailMerk'
+  ).innerText =
+    alat.merk || '-';
+
+
+  document.getElementById(
+    'detailModel'
+  ).innerText =
+    alat.model || '-';
+
+
+  document.getElementById(
+    'detailSerialNumber'
+  ).innerText =
+    alat.serialNumber || '-';
+
+
+  document.getElementById(
+    'detailLokasi'
+  ).innerText =
+    alat.lokasi || '-';
+
+
+  document.getElementById(
+    'detailKondisi'
+  ).innerText =
+    alat.kondisi || '-';
+
+
+  document.getElementById(
+    'detailKeterangan'
+  ).innerText =
+    alat.keterangan || '-';
+
+
+  // ---------------------------------------------------------------
+  // Status
+  // ---------------------------------------------------------------
+
+  const status =
+    String(
+      alat.status || ''
+    )
+    .trim()
+    .toUpperCase();
+
+
+  const statusElement =
+    document.getElementById(
+      'detailStatus'
+    );
+
+
+  statusElement.innerText =
+    status || '-';
+
+
+  statusElement.classList.remove(
+    'status-tersedia',
+    'status-digunakan',
+    'status-lain'
+  );
+
+
+  if (
+    status === 'TERSEDIA'
+  ) {
+
+    statusElement.classList.add(
+      'status-tersedia'
+    );
+
+  }
+
+  else if (
+    status === 'DIGUNAKAN'
+  ) {
+
+    statusElement.classList.add(
+      'status-digunakan'
+    );
+
+  }
+
+  else {
+
+    statusElement.classList.add(
+      'status-lain'
+    );
+
+  }
+
+
+  // ---------------------------------------------------------------
+  // Tampilkan hasil
+  // ---------------------------------------------------------------
+
+  document.getElementById(
+    'hasilScan'
+  ).style.display =
+    'block';
+
+
+  document.getElementById(
+    'statusScanner'
+  ).innerText =
+    'QR Code berhasil dibaca.';
+
+
+  // ---------------------------------------------------------------
+  // Tombol
+  // ---------------------------------------------------------------
+
+  document.getElementById(
+    'btnScanLagi'
+  ).style.display =
+    'block';
+
+
+  document.getElementById(
+    'btnCariManual'
+  ).style.display =
+    'block';
+
+
+  const btnTambah =
+    document.getElementById(
+      'btnTambahPeminjaman'
+    );
+
+
+  // ---------------------------------------------------------------
+  // Hanya alat TERSEDIA yang boleh dilanjutkan
+  // ---------------------------------------------------------------
+
+  btnTambah.disabled =
+    status !== 'TERSEDIA';
+
+}
+
+
+// =================================================================
+// TAMPILKAN ERROR
+// =================================================================
+
+function tampilkanError(
+  pesan
+) {
+
+  sedangMemproses = false;
+
+
+  document.getElementById(
+    'hasilScan'
+  ).style.display =
+    'none';
+
+
+  document.getElementById(
+    'errorBox'
+  ).innerText =
+    pesan;
+
+
+  document.getElementById(
+    'errorBox'
+  ).style.display =
+    'block';
+
+
+  document.getElementById(
+    'statusScanner'
+  ).innerText =
+    'Pemindaian selesai.';
+
+
+  document.getElementById(
+    'btnScanLagi'
+  ).style.display =
+    'block';
+
+
+  document.getElementById(
+    'btnCariManual'
+  ).style.display =
+    'block';
+
+}
+
+
+// =================================================================
+// KEMBALI KE PEMINJAMAN
+// =================================================================
+
+function kembaliKePeminjaman() {
+
+  // ---------------------------------------------------------------
+  // Jika scanner dibuka dari halaman peminjaman menggunakan
+  // window.open(), window.opener akan menunjuk ke halaman tersebut.
+  // ---------------------------------------------------------------
+
+  if (
+    window.opener &&
+    !window.opener.closed
+  ) {
+
+    window.opener.focus();
+
+    return;
+
+  }
+
+
+  // ---------------------------------------------------------------
+  // Jika tidak ada opener
+  // ---------------------------------------------------------------
+
+  alert(
+    'Halaman peminjaman masih harus dibuka pada tab sebelumnya.'
+  );
+
+}
+
+
+// =================================================================
+// TAMBAHKAN KE PEMINJAMAN
+// =================================================================
+//
+// BELUM AKTIF.
+//
+// Kita sengaja menahannya sampai mekanisme komunikasi dengan
+// halaman Apps Script selesai dibuat.
+// =================================================================
+
+function tambahKePeminjaman() {
+
+  if (!alatHasilScan) {
+
+    return;
+
+  }
+
+
+  alert(
+    'Data alat sudah terbaca: ' +
+    alatHasilScan.id +
+    '.\n\n' +
+    'Pengiriman ke keranjang akan kita aktifkan pada tahap berikutnya.'
+  );
+
+}
+
+
+// =================================================================
+// JALANKAN SCANNER
 // =================================================================
 
 window.addEventListener(
@@ -497,6 +1360,7 @@ window.addEventListener(
 
 
 </script>
+
 
 </body>
 
