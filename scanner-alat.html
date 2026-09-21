@@ -33,11 +33,8 @@
 
     body {
       margin: 0;
-
       font-family: Arial, sans-serif;
-
       background: #f4f6f8;
-
       color: #222;
     }
 
@@ -48,11 +45,8 @@
 
     .container {
       width: 100%;
-
       max-width: 600px;
-
       margin: auto;
-
       padding: 16px;
     }
 
@@ -63,9 +57,7 @@
 
     .card {
       background: #ffffff;
-
       border-radius: 14px;
-
       padding: 20px;
 
       box-shadow:
@@ -79,18 +71,14 @@
 
     h1 {
       margin: 0 0 6px;
-
       font-size: 23px;
-
       color: #222;
     }
 
 
     .subtitle {
       margin-bottom: 20px;
-
       font-size: 13px;
-
       color: #666;
     }
 
@@ -101,11 +89,8 @@
 
     #reader {
       width: 100%;
-
       overflow: hidden;
-
       border-radius: 10px;
-
       background: #000;
     }
 
@@ -116,36 +101,28 @@
 
     .status {
       margin-top: 14px;
-
       padding: 12px;
-
       border-radius: 8px;
-
       background: #f5f5f5;
 
       font-size: 13px;
-
       line-height: 1.5;
-
       text-align: center;
     }
 
 
     /* ============================================================
-       HASIL / DETAIL
+       DETAIL HASIL SCAN
        ============================================================ */
 
     .hasil {
       display: none;
 
       margin-top: 16px;
-
       padding: 15px;
 
       border-radius: 10px;
-
       background: #f8f9fa;
-
       border: 1px solid #e0e0e0;
     }
 
@@ -154,9 +131,7 @@
       margin-bottom: 5px;
 
       font-size: 11px;
-
       font-weight: 700;
-
       color: #666;
 
       letter-spacing: 0.3px;
@@ -167,9 +142,7 @@
       margin-bottom: 14px;
 
       font-size: 18px;
-
       font-weight: 700;
-
       color: #1976d2;
 
       word-break: break-word;
@@ -184,9 +157,7 @@
       overflow: hidden;
 
       border: 1px solid #e0e0e0;
-
       border-radius: 10px;
-
       background: #ffffff;
     }
 
@@ -195,11 +166,9 @@
       display: flex;
 
       justify-content: space-between;
-
       align-items: flex-start;
 
       gap: 15px;
-
       padding: 11px 12px;
 
       border-bottom: 1px solid #eeeeee;
@@ -215,7 +184,6 @@
 
     .detail-row span {
       flex: 0 0 42%;
-
       color: #666;
     }
 
@@ -224,7 +192,6 @@
       flex: 1;
 
       text-align: right;
-
       color: #222;
 
       word-break: break-word;
@@ -252,9 +219,7 @@
       margin-bottom: 5px;
 
       font-size: 11px;
-
       font-weight: 700;
-
       color: #666;
 
       letter-spacing: 0.3px;
@@ -263,28 +228,24 @@
 
     .status-alat-value {
       font-size: 18px;
-
       font-weight: 700;
     }
 
 
     .status-tersedia {
       background: #e8f5e9;
-
       color: #137333;
     }
 
 
     .status-digunakan {
       background: #ffebee;
-
       color: #c62828;
     }
 
 
     .status-lain {
       background: #fff8e1;
-
       color: #e65100;
     }
 
@@ -301,15 +262,12 @@
       padding: 14px 16px;
 
       border: none;
-
       border-radius: 9px;
 
       background: #1976d2;
-
       color: #ffffff;
 
       font-size: 14px;
-
       font-weight: 700;
 
       cursor: pointer;
@@ -332,9 +290,7 @@
 
     .button:disabled {
       background: #bdbdbd;
-
       cursor: not-allowed;
-
       opacity: 0.7;
     }
 
@@ -351,15 +307,12 @@
       padding: 13px 16px;
 
       border: 1px solid #1976d2;
-
       border-radius: 9px;
 
       background: #ffffff;
-
       color: #1976d2;
 
       font-size: 14px;
-
       font-weight: 700;
 
       cursor: pointer;
@@ -385,12 +338,110 @@
       border-radius: 9px;
 
       background: #ffebee;
-
       color: #c62828;
 
       font-size: 13px;
-
       line-height: 1.5;
+    }
+
+
+    /* ============================================================
+       KERANJANG
+       ============================================================ */
+
+    .keranjang-panel {
+      margin-top: 20px;
+
+      padding: 15px;
+
+      background: #f5f5f5;
+
+      border-radius: 10px;
+    }
+
+
+    .keranjang-title {
+      margin-bottom: 6px;
+
+      font-size: 13px;
+      color: #666;
+    }
+
+
+    .keranjang-jumlah {
+      margin-bottom: 12px;
+
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+
+    .keranjang-kosong {
+      color: #777;
+      font-size: 13px;
+    }
+
+
+    .keranjang-item {
+      margin-bottom: 10px;
+
+      padding: 12px;
+
+      background: #ffffff;
+
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+
+    .keranjang-item:last-child {
+      margin-bottom: 0;
+    }
+
+
+    .keranjang-item-nama {
+      margin-bottom: 5px;
+
+      font-weight: bold;
+    }
+
+
+    .keranjang-item-id {
+      margin-bottom: 8px;
+
+      font-size: 12px;
+      color: #666;
+    }
+
+
+    .keranjang-item-detail {
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+
+    .button-hapus {
+      width: 100%;
+
+      margin-top: 10px;
+
+      padding: 10px;
+
+      border: none;
+      border-radius: 8px;
+
+      background: #d32f2f;
+      color: #ffffff;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+
+    .button-hapus:hover {
+      background: #b71c1c;
     }
 
 
@@ -468,7 +519,7 @@
 
 
     <!-- ==========================================================
-         DETAIL PERALATAN
+         DETAIL HASIL SCAN
          ========================================================== -->
 
     <div
@@ -493,9 +544,7 @@
 
 
         <div class="detail-row">
-          <span>
-            Kode Barang
-          </span>
+          <span>Kode Barang</span>
 
           <strong id="detailKodeBarang">
             -
@@ -504,9 +553,7 @@
 
 
         <div class="detail-row">
-          <span>
-            Nama Peralatan
-          </span>
+          <span>Nama Peralatan</span>
 
           <strong id="detailNamaBarang">
             -
@@ -515,9 +562,7 @@
 
 
         <div class="detail-row">
-          <span>
-            Merk
-          </span>
+          <span>Merk</span>
 
           <strong id="detailMerk">
             -
@@ -526,9 +571,7 @@
 
 
         <div class="detail-row">
-          <span>
-            Model / Type
-          </span>
+          <span>Model / Type</span>
 
           <strong id="detailModel">
             -
@@ -537,9 +580,7 @@
 
 
         <div class="detail-row">
-          <span>
-            Serial Number
-          </span>
+          <span>Serial Number</span>
 
           <strong id="detailSerialNumber">
             -
@@ -548,9 +589,7 @@
 
 
         <div class="detail-row">
-          <span>
-            Lokasi
-          </span>
+          <span>Lokasi</span>
 
           <strong id="detailLokasi">
             -
@@ -559,9 +598,7 @@
 
 
         <div class="detail-row">
-          <span>
-            Kondisi
-          </span>
+          <span>Kondisi</span>
 
           <strong id="detailKondisi">
             -
@@ -570,9 +607,7 @@
 
 
         <div class="detail-row">
-          <span>
-            Keterangan
-          </span>
+          <span>Keterangan</span>
 
           <strong id="detailKeterangan">
             -
@@ -616,6 +651,7 @@
         class="button"
         type="button"
         onclick="tambahKePeminjaman()"
+        disabled
       >
         TAMBAHKAN KE PEMINJAMAN
       </button>
@@ -650,15 +686,58 @@
 
 
     <!-- ==========================================================
-         CARI MANUAL
+         KERANJANG PEMINJAMAN
+         ========================================================== -->
+
+    <div
+      id="panelKeranjangScanner"
+      class="keranjang-panel"
+    >
+
+      <div class="keranjang-title">
+        DAFTAR PEMINJAMAN
+      </div>
+
+
+      <div
+        id="jumlahKeranjangScanner"
+        class="keranjang-jumlah"
+      >
+        0 alat
+      </div>
+
+
+      <div id="daftarKeranjangScanner">
+
+        <div class="keranjang-kosong">
+          Belum ada alat yang ditambahkan.
+        </div>
+
+      </div>
+
+
+      <button
+        id="btnSelesaiScanner"
+        class="button"
+        type="button"
+        onclick="selesaiDariScanner()"
+        disabled
+      >
+        SELESAI
+      </button>
+
+    </div>
+
+
+    <!-- ==========================================================
+         CARI ALAT MANUAL
          ========================================================== -->
 
     <button
       id="btnCariManual"
       class="button-secondary"
       type="button"
-      style="display:none;"
-      onclick="kembaliKePeminjaman()"
+      onclick="bukaPencarianManualDariScanner()"
     >
       CARI ALAT MANUAL
     </button>
@@ -676,25 +755,15 @@
 // KONFIGURASI
 // =================================================================
 
+
 // URL WEB APP GOOGLE APPS SCRIPT
 //
-// Gunakan URL deployment Web App yang sama dengan CONFIG.WEB_APP_URL
-// pada Apps Script kamu.
-//
-// CONTOH:
-// https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+// Gunakan URL deployment Web App yang sama dengan
+// CONFIG.WEB_APP_URL pada Apps Script.
 //
 
 const APPS_SCRIPT_URL =
   'https://script.google.com/macros/s/AKfycbwPq8v4Xrco0Bj_Un7uWwbdTyAK_IHfULw_lKC99aTI-BiJiIfM8evhW5GLhhlOzzIF/exec';
-
-
-/*
- * URL halaman peminjaman akan kita isi pada tahap berikutnya.
- *
- * Untuk sekarang tombol CARI ALAT MANUAL akan mencoba kembali
- * ke tab yang membuka scanner.
- */
 
 
 // =================================================================
@@ -706,6 +775,8 @@ let scanner = null;
 let sedangMemproses = false;
 
 let alatHasilScan = null;
+
+let keranjangScanner = [];
 
 
 // =================================================================
@@ -720,37 +791,49 @@ async function mulaiScanner() {
 
 
   // ---------------------------------------------------------------
-  // Sembunyikan hasil sebelumnya
+  // Sembunyikan hasil scan sebelumnya
   // ---------------------------------------------------------------
 
   document.getElementById(
     'hasilScan'
-  ).style.display =
-    'none';
+  ).style.display = 'none';
 
 
   document.getElementById(
     'errorBox'
-  ).style.display =
-    'none';
+  ).style.display = 'none';
 
 
   document.getElementById(
     'btnScanLagi'
-  ).style.display =
-    'none';
+  ).style.display = 'none';
 
 
-  document.getElementById(
-    'btnCariManual'
-  ).style.display =
-    'none';
+  // ---------------------------------------------------------------
+  // Tombol CARI ALAT MANUAL sengaja TIDAK disembunyikan.
+  // ---------------------------------------------------------------
 
 
   document.getElementById(
     'statusScanner'
   ).innerText =
     'Menyiapkan kamera...';
+
+
+  // ---------------------------------------------------------------
+  // Reset tombol tambah
+  // ---------------------------------------------------------------
+
+  const tombolTambah =
+    document.getElementById(
+      'btnTambahPeminjaman'
+    );
+
+
+  tombolTambah.disabled = true;
+
+  tombolTambah.innerText =
+    'TAMBAHKAN KE PEMINJAMAN';
 
 
   // ---------------------------------------------------------------
@@ -799,6 +882,7 @@ async function mulaiScanner() {
           width: 250,
           height: 250
         }
+
       },
 
       prosesQRCode
@@ -826,7 +910,7 @@ async function mulaiScanner() {
 
 
     document.getElementById(
-      'btnCariManual'
+      'btnScanLagi'
     ).style.display =
       'block';
 
@@ -1013,6 +1097,7 @@ function mintaDetailAlat(
     function() {
 
       script.remove();
+
 
       tampilkanError(
         'Data peralatan tidak dapat diambil dari server.'
@@ -1211,12 +1296,6 @@ function terimaDetailAlat(
     'block';
 
 
-  document.getElementById(
-    'btnCariManual'
-  ).style.display =
-    'block';
-
-
   const btnTambah =
     document.getElementById(
       'btnTambahPeminjaman'
@@ -1273,62 +1352,19 @@ function tampilkanError(
   ).style.display =
     'block';
 
-
-  document.getElementById(
-    'btnCariManual'
-  ).style.display =
-    'block';
-
-}
-
-
-// =================================================================
-// KEMBALI KE PEMINJAMAN
-// =================================================================
-
-function kembaliKePeminjaman() {
-
-  // ---------------------------------------------------------------
-  // Jika scanner dibuka dari halaman peminjaman menggunakan
-  // window.open(), window.opener akan menunjuk ke halaman tersebut.
-  // ---------------------------------------------------------------
-
-  if (
-    window.opener &&
-    !window.opener.closed
-  ) {
-
-    window.opener.focus();
-
-    return;
-
-  }
-
-
-  // ---------------------------------------------------------------
-  // Jika tidak ada opener
-  // ---------------------------------------------------------------
-
-  alert(
-    'Halaman peminjaman masih harus dibuka pada tab sebelumnya.'
-  );
-
 }
 
 
 // =================================================================
 // TAMBAHKAN KE PEMINJAMAN
 // =================================================================
-//
-// BELUM AKTIF.
-//
-// Kita sengaja menahannya sampai mekanisme komunikasi dengan
-// halaman Apps Script selesai dibuat.
-// =================================================================
 
 function tambahKePeminjaman() {
 
-  // Pastikan data alat tersedia.
+  // ---------------------------------------------------------------
+  // Pastikan data alat tersedia
+  // ---------------------------------------------------------------
+
   if (!alatHasilScan) {
 
     alert(
@@ -1340,11 +1376,16 @@ function tambahKePeminjaman() {
   }
 
 
-  // Hanya alat TERSEDIA yang boleh ditambahkan.
+  // ---------------------------------------------------------------
+  // Hanya alat TERSEDIA yang boleh ditambahkan
+  // ---------------------------------------------------------------
+
   if (
-    String(alatHasilScan.status)
-      .trim()
-      .toUpperCase()
+    String(
+      alatHasilScan.status
+    )
+    .trim()
+    .toUpperCase()
     !== 'TERSEDIA'
   ) {
 
@@ -1357,7 +1398,10 @@ function tambahKePeminjaman() {
   }
 
 
-  // Pastikan halaman peminjaman masih terbuka.
+  // ---------------------------------------------------------------
+  // Pastikan halaman peminjaman masih terbuka
+  // ---------------------------------------------------------------
+
   if (
     !window.opener ||
     window.opener.closed
@@ -1374,7 +1418,7 @@ function tambahKePeminjaman() {
 
 
   // ---------------------------------------------------------------
-  // UBAH FORMAT DATA AGAR SAMA DENGAN DATA HASIL PENCARIAN MANUAL
+  // Ubah format data agar sama dengan keranjang Apps Script
   // ---------------------------------------------------------------
 
   const alatUntukKeranjang = {
@@ -1422,20 +1466,25 @@ function tambahKePeminjaman() {
 
 
   // ---------------------------------------------------------------
-  // KIRIM KE HALAMAN PEMINJAMAN
+  // Kirim permintaan penambahan ke halaman peminjaman
   // ---------------------------------------------------------------
 
   window.opener.postMessage(
+
     {
-      type: 'alat-terpilih',
-      alat: alatUntukKeranjang
+      type: 'tambah-alat',
+
+      alat:
+        alatUntukKeranjang
     },
-    'https://script.google.com'
+
+    '*'
+
   );
 
 
   // ---------------------------------------------------------------
-  // UBAH TOMBOL SEBAGAI TANDA BERHASIL
+  // Tombol menunggu hasil dari Apps Script
   // ---------------------------------------------------------------
 
   const tombol =
@@ -1445,29 +1494,514 @@ function tambahKePeminjaman() {
 
 
   tombol.innerText =
-    '✓ DITAMBAHKAN KE PEMINJAMAN';
+    'MENAMBAHKAN...';
+
 
   tombol.disabled =
     true;
 
+}
 
-  // Kembali fokus ke halaman peminjaman.
+
+// =================================================================
+// RENDER KERANJANG SCANNER
+// =================================================================
+
+function renderKeranjangScanner() {
+
+  const jumlah =
+    document.getElementById(
+      'jumlahKeranjangScanner'
+    );
+
+
+  const daftar =
+    document.getElementById(
+      'daftarKeranjangScanner'
+    );
+
+
+  const tombolSelesai =
+    document.getElementById(
+      'btnSelesaiScanner'
+    );
+
+
+  jumlah.innerText =
+    keranjangScanner.length +
+    ' alat';
+
+
+  tombolSelesai.disabled =
+    keranjangScanner.length === 0;
+
+
+  if (
+    keranjangScanner.length === 0
+  ) {
+
+    daftar.innerHTML =
+      '<div class="keranjang-kosong">' +
+      'Belum ada alat yang ditambahkan.' +
+      '</div>';
+
+    return;
+
+  }
+
+
+  let html = '';
+
+
+  keranjangScanner.forEach(
+    function(alat) {
+
+      const idAlat =
+        alat.idAlat || '';
+
+
+      html +=
+
+        '<div class="keranjang-item">' +
+
+          '<div class="keranjang-item-nama">' +
+            escapeHtmlScanner(
+              alat.namaBarang || '-'
+            ) +
+          '</div>' +
+
+          '<div class="keranjang-item-id">' +
+            escapeHtmlScanner(
+              idAlat || '-'
+            ) +
+          '</div>' +
+
+          '<div class="keranjang-item-detail">' +
+
+            '<b>Kode Barang:</b> ' +
+            escapeHtmlScanner(
+              alat.kodeBarang || '-'
+            ) +
+
+            '<br>' +
+
+            '<b>Merk:</b> ' +
+            escapeHtmlScanner(
+              alat.merk || '-'
+            ) +
+
+            '<br>' +
+
+            '<b>Model:</b> ' +
+            escapeHtmlScanner(
+              alat.model || '-'
+            ) +
+
+          '</div>' +
+
+          '<button ' +
+            'type="button" ' +
+            'class="button-hapus" ' +
+            'onclick="hapusDariScanner(\'' +
+              escapeJsScanner(
+                idAlat
+              ) +
+            '\')"' +
+          '>' +
+            'HAPUS' +
+          '</button>' +
+
+        '</div>';
+
+    }
+  );
+
+
+  daftar.innerHTML =
+    html;
+
+}
+
+
+// =================================================================
+// ESCAPE HTML
+// =================================================================
+
+function escapeHtmlScanner(
+  value
+) {
+
+  return String(
+    value == null
+      ? ''
+      : value
+  )
+
+    .replace(
+      /&/g,
+      '&amp;'
+    )
+
+    .replace(
+      /</g,
+      '&lt;'
+    )
+
+    .replace(
+      />/g,
+      '&gt;'
+    )
+
+    .replace(
+      /"/g,
+      '&quot;'
+    )
+
+    .replace(
+      /'/g,
+      '&#39;'
+    );
+
+}
+
+
+// =================================================================
+// ESCAPE JAVASCRIPT
+// =================================================================
+
+function escapeJsScanner(
+  value
+) {
+
+  return String(
+    value || ''
+  )
+
+    .replace(
+      /\\/g,
+      '\\\\'
+    )
+
+    .replace(
+      /'/g,
+      "\\'"
+    );
+
+}
+
+
+// =================================================================
+// MEMBERITAHU HALAMAN PEMINJAMAN
+// =================================================================
+
+function beriTahuHalamanPeminjaman() {
+
+  if (
+    window.opener &&
+    !window.opener.closed
+  ) {
+
+    window.opener.postMessage(
+
+      {
+        type:
+          'scanner-siap'
+      },
+
+      '*'
+
+    );
+
+  }
+
+}
+
+
+// =================================================================
+// HAPUS ALAT DARI KERANJANG
+// =================================================================
+
+function hapusDariScanner(
+  idAlat
+) {
+
+  if (
+    !window.opener ||
+    window.opener.closed
+  ) {
+
+    alert(
+      'Halaman peminjaman tidak ditemukan.'
+    );
+
+    return;
+
+  }
+
+
+  window.opener.postMessage(
+
+    {
+      type:
+        'hapus-alat',
+
+      idAlat:
+        idAlat
+    },
+
+    '*'
+
+  );
+
+}
+
+
+// =================================================================
+// CARI ALAT MANUAL
+// =================================================================
+
+function bukaPencarianManualDariScanner() {
+
+  if (
+    !window.opener ||
+    window.opener.closed
+  ) {
+
+    alert(
+      'Halaman peminjaman tidak ditemukan.'
+    );
+
+    return;
+
+  }
+
+
+  window.opener.postMessage(
+
+    {
+      type:
+        'buka-pencarian-manual'
+    },
+
+    '*'
+
+  );
+
+
   window.opener.focus();
 
 }
 
 
 // =================================================================
-// JALANKAN SCANNER
+// SELESAI DARI SCANNER
+// =================================================================
+
+function selesaiDariScanner() {
+
+  if (
+    keranjangScanner.length === 0
+  ) {
+
+    return;
+
+  }
+
+
+  if (
+    !window.opener ||
+    window.opener.closed
+  ) {
+
+    alert(
+      'Halaman peminjaman tidak ditemukan.'
+    );
+
+    return;
+
+  }
+
+
+  window.opener.postMessage(
+
+    {
+      type:
+        'selesai-keranjang'
+    },
+
+    '*'
+
+  );
+
+
+  window.opener.focus();
+
+}
+
+
+// =================================================================
+// MENERIMA PESAN DARI HALAMAN PEMINJAMAN
+// =================================================================
+
+window.addEventListener(
+  'message',
+
+  function(event) {
+
+    const data =
+      event.data;
+
+
+    if (
+      !data ||
+      !data.type
+    ) {
+
+      return;
+
+    }
+
+
+    // -------------------------------------------------------------
+    // KERANJANG DIPERBARUI
+    // -------------------------------------------------------------
+
+    if (
+      data.type ===
+      'keranjang-diperbarui'
+    ) {
+
+      if (
+        Array.isArray(
+          data.keranjang
+        )
+      ) {
+
+        keranjangScanner =
+          data.keranjang;
+
+        renderKeranjangScanner();
+
+      }
+
+
+      return;
+
+    }
+
+
+    // -------------------------------------------------------------
+    // HASIL PENAMBAHAN ALAT
+    // -------------------------------------------------------------
+
+    if (
+      data.type ===
+      'alat-tambah-hasil'
+    ) {
+
+      if (
+        Array.isArray(
+          data.keranjang
+        )
+      ) {
+
+        keranjangScanner =
+          data.keranjang;
+
+        renderKeranjangScanner();
+
+      }
+
+
+      const tombol =
+        document.getElementById(
+          'btnTambahPeminjaman'
+        );
+
+
+      if (
+        data.success === true
+      ) {
+
+        tombol.innerText =
+          '✓ DITAMBAHKAN KE PEMINJAMAN';
+
+
+        tombol.disabled =
+          true;
+
+
+        document.getElementById(
+          'statusScanner'
+        ).innerText =
+          data.message ||
+          'Alat berhasil ditambahkan ke peminjaman.';
+
+      }
+
+      else {
+
+        tombol.innerText =
+          'TAMBAHKAN KE PEMINJAMAN';
+
+
+        const status =
+          document.getElementById(
+            'statusScanner'
+          );
+
+
+        status.innerText =
+          data.message ||
+          'Alat tidak dapat ditambahkan.';
+
+
+        // Jika alat duplicate, tombol tetap
+        // bisa digunakan setelah scan alat lain.
+        tombol.disabled =
+          String(
+            alatHasilScan &&
+            alatHasilScan.status || ''
+          )
+          .trim()
+          .toUpperCase()
+          !== 'TERSEDIA';
+
+      }
+
+
+      return;
+
+    }
+
+  }
+
+);
+
+
+// =================================================================
+// SAAT HALAMAN SELESAI DIMUAT
 // =================================================================
 
 window.addEventListener(
   'load',
+
   function() {
 
+    // Render keranjang kosong terlebih dahulu
+    renderKeranjangScanner();
+
+
+    // Beri tahu halaman peminjaman bahwa
+    // scanner sudah siap menerima data keranjang.
+    beriTahuHalamanPeminjaman();
+
+
+    // Mulai kamera.
     mulaiScanner();
 
   }
+
 );
 
 
