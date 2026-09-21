@@ -952,34 +952,26 @@ async function prosesQRCode(
   }
 
 
-  // ---------------------------------------------------------------
+    // ---------------------------------------------------------------
   // Ambil ID alat
   // ---------------------------------------------------------------
 
   let idAlat = '';
+  const teksBersih = String(decodedText || '').trim();
 
-
-  try {
-
-    const url =
-      new URL(
-        decodedText
-      );
-
-
-    idAlat =
-      url.searchParams.get(
-        'id'
-      ) || '';
-
-
-  } catch (error) {
-
-    // Jika QR berisi ID langsung
-
-    idAlat =
-      decodedText.trim();
-
+  // 1. Coba cari parameter id= menggunakan regex (fleksibel untuk berbagai format URL/query)
+  const matchId = teksBersih.match(/[?&]id=([^&#\s]+)/i);
+  if (matchId) {
+    idAlat = decodeURIComponent(matchId[1]).trim();
+  } else {
+    // 2. Coba parse sebagai URL standar
+    try {
+      const url = new URL(teksBersih);
+      idAlat = url.searchParams.get('id') || '';
+    } catch (e) {
+      // 3. Jika bukan URL, gunakan teks mentah langsung sebagai ID
+      idAlat = teksBersih;
+    }
   }
 
 
@@ -1487,20 +1479,28 @@ function tambahKePeminjaman() {
   // Tombol menunggu hasil dari Apps Script
   // ---------------------------------------------------------------
 
-  const tombol =
+   const tombol =
     document.getElementById(
       'btnTambahPeminjaman'
     );
 
-
   tombol.innerText =
     'MENAMBAHKAN...';
-
 
   tombol.disabled =
     true;
 
-}
+  // Timeout pengaman jika pesan postMessage tidak dibalas dalam 6 detik
+  setTimeout(function() {
+    if (tombol.innerText === 'MENAMBAHKAN...') {
+      tombol.disabled = false;
+      tombol.innerText = 'TAMBAHKAN KE PEMINJAMAN';
+      const statusBox = document.getElementById('statusScanner');
+      if (statusBox) {
+        statusBox.innerText = 'Tidak ada balasan dari halaman peminjaman. Pastikan tab peminjaman tetap terbuka.';
+      }
+    }
+  }, 6000);
 
 
 // =================================================================
