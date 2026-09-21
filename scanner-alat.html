@@ -1328,19 +1328,131 @@ function kembaliKePeminjaman() {
 
 function tambahKePeminjaman() {
 
+  // Pastikan data alat tersedia.
   if (!alatHasilScan) {
+
+    alert(
+      'Data alat belum tersedia.'
+    );
 
     return;
 
   }
 
 
-  alert(
-    'Data alat sudah terbaca: ' +
-    alatHasilScan.id +
-    '.\n\n' +
-    'Pengiriman ke keranjang akan kita aktifkan pada tahap berikutnya.'
+  // Hanya alat TERSEDIA yang boleh ditambahkan.
+  if (
+    String(alatHasilScan.status)
+      .trim()
+      .toUpperCase()
+    !== 'TERSEDIA'
+  ) {
+
+    alert(
+      'Alat ini tidak tersedia untuk dipinjam.'
+    );
+
+    return;
+
+  }
+
+
+  // Pastikan halaman peminjaman masih terbuka.
+  if (
+    !window.opener ||
+    window.opener.closed
+  ) {
+
+    alert(
+      'Halaman peminjaman tidak ditemukan. ' +
+      'Silakan buka halaman peminjaman terlebih dahulu.'
+    );
+
+    return;
+
+  }
+
+
+  // ---------------------------------------------------------------
+  // UBAH FORMAT DATA AGAR SAMA DENGAN DATA HASIL PENCARIAN MANUAL
+  // ---------------------------------------------------------------
+
+  const alatUntukKeranjang = {
+
+    idAlat:
+      alatHasilScan.id || '',
+
+    kodeBarang:
+      alatHasilScan.kodeBarang || '',
+
+    namaBarang:
+      alatHasilScan.namaBarang || '',
+
+    merk:
+      alatHasilScan.merk || '',
+
+    model:
+      alatHasilScan.model || '',
+
+    serialNumber:
+      alatHasilScan.serialNumber || '',
+
+    kelompok:
+      alatHasilScan.kelompok || '',
+
+    subKelompok:
+      alatHasilScan.subKelompok || '',
+
+    tahun:
+      alatHasilScan.tahun || '',
+
+    lokasi:
+      alatHasilScan.lokasi || '',
+
+    kondisi:
+      alatHasilScan.kondisi || '',
+
+    status:
+      alatHasilScan.status || '',
+
+    keterangan:
+      alatHasilScan.keterangan || ''
+
+  };
+
+
+  // ---------------------------------------------------------------
+  // KIRIM KE HALAMAN PEMINJAMAN
+  // ---------------------------------------------------------------
+
+  window.opener.postMessage(
+    {
+      type: 'alat-terpilih',
+      alat: alatUntukKeranjang
+    },
+    'https://script.google.com'
   );
+
+
+  // ---------------------------------------------------------------
+  // UBAH TOMBOL SEBAGAI TANDA BERHASIL
+  // ---------------------------------------------------------------
+
+  const tombol =
+    document.getElementById(
+      'btnTambahPeminjaman'
+    );
+
+
+  tombol.innerText =
+    '✓ DITAMBAHKAN KE PEMINJAMAN';
+
+  tombol.disabled =
+    true;
+
+
+  // Kembali fokus ke halaman peminjaman.
+  window.opener.focus();
 
 }
 
